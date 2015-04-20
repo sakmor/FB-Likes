@@ -35,23 +35,38 @@
 </head>
 
 <body>
+    <img id="qrcode" style="position: absolute; top:200px; left:350px;" src="https://chart.googleapis.com/chart?chs=240x240&amp;chld=H&amp;cht=qr&amp;chl=http://www.apple.com" />
+    <img id="qrcodeLogo" style="position: absolute; top:285px; left:435px; height:75px; width:75px;" src="https://lh3.googleusercontent.com/-4EvRCI9HVSA/AAAAAAAAAAI/AAAAAAAAAAA/knZhIxGF28k/photo.jpg" />
+
+
     <div class="app">
-        <h1 id="title">LIKES COUNTER</h1> URL：
+
+        <h1 id="demo">LIKES COUNTER</h1> URL：
         <input type="text" id="url" value='facebook'>
         <br />
         <button onclick="setInterval(myFunction,1000)">分析結果</button>
 
-        <p id="demo">Facebook Likes Counter:</p>
 
         <script>
             function myFunction() {
 
                 var url = document.getElementById('url');
-                jQuery.getJSON('http://graph.facebook.com/'+url.value, 'Likes', function (result) {
+                var qrcode = document.getElementById('qrcode');
+                qrcode.src = "https://chart.googleapis.com/chart?chs=240x240&amp;chld=H&amp;cht=qr&amp;chl=http://www.apple.com";
+                jQuery.getJSON('http://graph.facebook.com/' + url.value, 'Likes', function (result) {
 
-                        document.getElementById('demo').innerHTML = result.likes+" 個人說很讚的啦";
+                        document.getElementById('demo').innerHTML = result.likes + " 個人說讚";
                     })
                     //                document.getElementById('demo').innerHTML = "Paragraph changed!";
+            }
+
+            function QRCode(content, width, height) {
+                // 預設寬高為 120x120
+                width = !!width ? width : 120;
+                height = !!height ? height : 120;
+                // 編碼
+                content = encodeURIComponent(content);
+                return 'http://chart.apis.google.com/chart?cht=qr&chl=' + content + '&chs=' + width + 'x' + height;
             }
         </script>
     </div>

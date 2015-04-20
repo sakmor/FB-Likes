@@ -37,25 +37,19 @@
 <body>
     <div class="app">
         <h1 id="title">LIKES COUNTER</h1> URL：
-        <input type="text" id="url" value='https://www.facebook.com'>
+        <input type="text" id="url" value='facebook'>
         <br />
-        <button onclick="myFunction()">分析結果</button>
+        <button onclick="setInterval(myFunction,1000)">分析結果</button>
 
         <p id="demo">Facebook Likes Counter:</p>
 
         <script>
             function myFunction() {
-                //                jQuery('.facebook_likes').each(function () {
-                //                    var currentdiv = jQuery(this);
-                //                    var url = 'www.apple.com'
-                //                    jQuery.getJSON('http://graph.facebook.com/' + url, function (data) {
-                //                        currentdiv.text((data.shares || 0) + ' Likes');
-                //                    });
-                //                })
-                var url = document.getElementById('url').value;
-                this.a = jQuery.getJSON('http://graph.facebook.com/' + url, 'Likes', function (result) {
 
-                        document.getElementById('demo').innerHTML = result.likes;
+                var url = document.getElementById('url');
+                jQuery.getJSON('http://graph.facebook.com/'+url.value, 'Likes', function (result) {
+
+                        document.getElementById('demo').innerHTML = result.likes+" 個人說很讚的啦";
                     })
                     //                document.getElementById('demo').innerHTML = "Paragraph changed!";
             }

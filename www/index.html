@@ -35,13 +35,13 @@
 </head>
 
 <body>
-    <img id="qrcode" style="position: absolute; top:200px; left:350px;" src="https://chart.googleapis.com/chart?chs=240x240&amp;chld=H&amp;cht=qr&amp;chl=http://www.apple.com" />
-    <img id="qrcodeLogo" style="position: absolute; top:285px; left:435px; height:75px; width:75px;" src="https://lh3.googleusercontent.com/-4EvRCI9HVSA/AAAAAAAAAAI/AAAAAAAAAAA/knZhIxGF28k/photo.jpg" />
+    <img id="qrcode" style="position: absolute; top:30px; left:30px;" src="https://chart.googleapis.com/chart?cht=qr&chs=240x240&chld=h&chl=https://www.facebook.com/facebook/">
+    <img id="qrcodeLogo" style="position: absolute; top:114px; left:114px; height:75px; width:75px;" src="http://graph.facebook.com/facebook/picture" />
 
-
+<br />
     <div class="app">
 
-        <h1 id="demo">LIKES COUNTER</h1> URL：
+        <h1 id="demo">LIKES COUNTER</h1> https://www.facebook.com/：
         <input type="text" id="url" value='facebook'>
         <br />
         <button onclick="setInterval(myFunction,1000)">分析結果</button>
@@ -51,10 +51,14 @@
             function myFunction() {
 
                 var url = document.getElementById('url');
-                var qrcode = document.getElementById('qrcode');
-                qrcode.src = "https://chart.googleapis.com/chart?chs=240x240&amp;chld=H&amp;cht=qr&amp;chl=http://www.apple.com";
-                jQuery.getJSON('http://graph.facebook.com/' + url.value, 'Likes', function (result) {
 
+                var qrcode = document.getElementById('qrcode');
+				qrcode.src = "https://chart.googleapis.com/chart?cht=qr&chs=240x240&chld=h&chl=https://www.facebook.com/"+url.value;
+
+				var qrcodeLogo = document.getElementById('qrcodeLogo');
+				qrcodeLogo.src ="http://graph.facebook.com/"+url.value+"/picture";
+
+                jQuery.getJSON('http://graph.facebook.com/' + url.value, 'Likes', function (result) {
                         document.getElementById('demo').innerHTML = result.likes + " 個人說讚";
                     })
                     //                document.getElementById('demo').innerHTML = "Paragraph changed!";

@@ -14,11 +14,14 @@ function addTodo(camera_url) {
     var title = $("#todo-title").val();
     var body = $("#todo-body").val();
     var img_tag = "";
-
     img_tag = "<img src='" + logo + "'>";
 
+    var edit_button = "";
+    edit_button = '<a href="#add-page" data-icon="add" class="ui-btn-right">Add</a>';
+
     $.mobile.changePage($("#list-page"));
-    $("#todo-list").append("<li>" + img_tag + "<h3>" + title + "</h3><p>" + body + "</p></li>")
+    $("#todo-list").append("<li>" + img_tag + "<h3>" + title + "</h3><p>" + body + "</p>" +
+        edit_button + "</li>")
     $("#todo-list").listview('refresh');
 };
 

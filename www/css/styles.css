@@ -1,0 +1,44 @@
+/* set padding for iOS7 status bar */
+
+.ua-ios-7 .ui-page,
+.ua-ios-8,
+.ui-page {
+    padding-top: 63px !important;
+}
+
+.ua-ios-7 .ui-header,
+.ua-ios-8 .ui-header {
+    top: 20px;
+}
+
+.qrcode {
+    background-color: #3e3e3e;
+
+    border: 1px solid #9a9a9a;
+    box-shadow: inset 3px 3px 3px rgba(10%, 10%, 10%, 0.1);
+    border-radius: 10px;
+    height: 260px;
+    width: 100%;
+    text-align: center;
+    /* Firefox, Chrome */
+
+    line-height: 200px;
+    /* IE */
+
+    *font-size: 180px;
+    /* 200px * 0.9 = 180px */
+
+    *font-family: Arial;
+}
+
+.qrcode img {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    vertical-align: middle;
+}
+
+.qrcode {}
+
+.qrcode img {}

@@ -18,7 +18,7 @@
     <div data-role="page" id="list-page">
         <div data-role="header" data-position="fixed" data-theme="c">
             <h1>Fan Page List</h1>
-            <a href="#add-page" data-icon="add" class="ui-btn-right">Add</a>
+            <a href="#add-page" data-icon="add" data-transition="slide" class="ui-btn-right">Add</a>
         </div>
         <div data-role="content">
             <ul data-role="listview" data-inset="true" id="todo-list"></ul>
@@ -27,8 +27,8 @@
 
     <div data-role="page" id="add-page">
         <div data-role="header" data-position="fixed" data-theme="c">
-            <h1>Add Fan Page</h1>
-            <a href="#list-page" data-icon="back" class="ui-btn-left">back</a>
+            <h1 id="todo-handel">Add Fan Page</h1>
+            <a href="#list-page" data-icon="back" data-transition="slide" data-direction="reverse" class="ui-btn-left">back</a>
         </div>
         <div data-role="content">
             <input id="todo-title" type="text" placeholder="URL">
@@ -37,9 +37,8 @@
                 <img img id="qrLogo" style="position: absolute; top:214px; left:102px; height:75px; width:75px;" src="https://graph.facebook.com/ARonline.tw/picture?type=large" />
             </div>
             <div id="flip-counter" class="flip-counter">
-                <textarea id="todo-body" style="height: 8em" placeholder="Description"></textarea>
+                <textarea id="todo-body" style="height: 2.5em" placeholder="Description"></textarea>
                 <input id="add-button" type="button" value="Save" onclick="addTodo()" data-theme="b">
-                <!--            <input id="add-button" type="button" value="Picture And Save" onclick="addTodoPicture()" data-theme="b">-->
             </div>
         </div>
 </body>

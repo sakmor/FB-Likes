@@ -11,15 +11,15 @@ function addTodoPicture() {
     });
 }
 
-function selectList(title) {
+function clickList(title) {
+
+    document.getElementById("todo-handel").innerText = "修改屍團";
+    document.getElementById("add-button").value = "修改";
     this.url = title;
     $("#qrcode").attr("src", "https://chart.googleapis.com/chart?chs=240x240&chld=H|1&cht=qr&chl=https://www.facebook.com/" + this.url);
     $("#qrLogo").attr("src", "http://graph.facebook.com/" + this.url + "/picture?type=large");
     document.getElementById("todo-title").value = this.url;
-    document.getElementById("todo-handel").innerText = "Edit Fan Page";
-    var a = document.getElementById("add-button");
-    a.defaultValue = "apple";
-    //    = this.url;
+
 
     $("#add-button").attr("value", "Save Chagne");
     logo = "http://graph.facebook.com/" + this.url + "/picture?type=large";
@@ -29,7 +29,18 @@ function selectList(title) {
         //        refreshIntervalId = setInterval(autoUpdata, 3000);
     });
 
-};
+}
+
+function clickADD(title) {
+    myCounter.setValue(99999);
+    document.getElementById("todo-handel").innerText = "新增粉屍團";
+    document.getElementById("add-button").value = listData.length;
+    document.getElementById("todo-title").value = "";
+    $("#qrcode").attr("src", "https://chart.googleapis.com/chart?chs=240x240&chld=H|1&cht=qr&chl=https://www.facebook.com/");
+    $("#qrLogo").attr("src", "http://graph.facebook.com/picture?type=large");
+
+}
+
 
 function addTodo(camera_url) {
     clearInterval(refreshIntervalId);
@@ -38,10 +49,10 @@ function addTodo(camera_url) {
     var img_tag = "";
 
     img_tag = "<img src='" + logo + "'>";
-
     document.getElementById("todo-handel").innerText = "Add New Fan Page";
+
     $.mobile.changePage($("#list-page"));
-    $("#todo-list").append("<li>" + ' <a href="#add-page" data-transition="slide" onclick="selectList(listData[' + listData.length + '])">   <img src="' + logo + '"><h1>' + title + '</h1></p>' + body + '</a>' + "</p></li>")
+    $("#todo-list").append("<li>" + ' <a href="#add-page" data-transition="slide" onclick="clickList(listData[' + listData.length + '])">   <img src="' + logo + '"><h1>' + title + '</h1></p>' + body + '</a>' + "</p></li>")
     $("#todo-list").listview('refresh');
     listData[listData.length] = title;
 };
@@ -49,6 +60,7 @@ function addTodo(camera_url) {
 i = 0;
 logo = 0;
 refreshIntervalId = 0;
+var myCounter = {};
 $(document).ready(function () {
 
     function autoUpdata() {
@@ -59,7 +71,7 @@ $(document).ready(function () {
         });
     }
 
-    var myCounter = new flipCounter('flip-counter', {
+    myCounter = new flipCounter('flip-counter', {
         value: 10000,
         inc: 12,
         pace: 600,

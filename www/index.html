@@ -29,7 +29,7 @@
     <div data-role="page" id="add-page">
         <div data-role="header" data-position="fixed" data-theme="c">
             <h1 id="todo-handel">Add Fan Page</h1>
-            <a href="#list-page" data-icon="back" data-transition="slide" data-direction="reverse" class="ui-btn-left">back</a>
+            <a href="#list-page" data-icon="back" onclick="arrayToList()" class="ui-btn-left">back</a>
         </div>
         <div data-role="content">
             <input id="todo-title" type="text" placeholder="URL">
@@ -40,6 +40,7 @@
             <div id="flip-counter" class="flip-counter">
                 <textarea id="todo-body" style="height: 2.5em" placeholder="Description"></textarea>
                 <input id="add-button" type="button" value="Save" onclick="addTodo()" data-theme="b">
+                <input id="add-buttona" type="button" value="delete" onclick="deleteList()" data-theme="b">
             </div>
         </div>
     </div>

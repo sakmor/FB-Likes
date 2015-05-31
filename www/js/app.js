@@ -2,6 +2,11 @@ var saveMode = 0;
 var listArray = [];
 var nowListNumber = 0;
 
+Array.prototype.remove = function (from, to) {
+    var rest = this.slice((to || from) + 1 || this.length);
+    this.length = from < 0 ? this.length + from : from;
+    return this.push.apply(this, rest);
+};
 
 var listData = {
     title: "sega",
@@ -11,7 +16,17 @@ var listData = {
 };
 
 listArray.push(listData);
+/**
+ * 移除清單
+ *
+ */
 
+function deleteList() {
+    listArray.remove(nowListNumber, nowListNumber);
+    arrayToList();
+    $("#todo-list").listview('refresh');
+    $.mobile.changePage($("#list-page"));
+}
 
 /**
  *將listArray內的資料轉成ListView
@@ -93,7 +108,7 @@ function addTodo(listArrayNumber) {
         listArray.push(this.tempData);
         arrayToList();
         //        $("#todo-list").append("<li>" + ' <a href="#add-page" data-transition="slide" onclick="clickList(listArray[' + listArray.length + '])">   <img src="' + logo + '"><h1>' + title + '</h1></p>' + body + '</a>' + "</p></li>")
-        $("#todo-list").listview('refresh');
+
 
 
     }
@@ -115,9 +130,6 @@ function addTodo(listArrayNumber) {
         listArray[nowListNumber].body = body;
 
         arrayToList();
-        //        $("#todo-list").append("<li>" + ' <a href="#add-page" data-transition="slide" onclick="clickList(listArray[' + listArray.length + '])">   <img src="' + logo + '"><h1>' + title + '</h1></p>' + body + '</a>' + "</p></li>")
-        $("#todo-list").listview('refresh');
-
 
 
     }
